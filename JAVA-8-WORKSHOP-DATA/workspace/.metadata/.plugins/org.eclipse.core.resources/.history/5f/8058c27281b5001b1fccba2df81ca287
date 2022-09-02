@@ -1,0 +1,23 @@
+package in.ashokit;
+
+public class Demo3 {
+
+}
+
+class User {
+	String name;
+	int salary;
+	String country;
+
+	public Employee(String name, int salary, String country) {
+		this.name = name;
+		this.salary = salary;
+		this.country = country;
+	}
+
+	@Override
+	public String toString() {
+		return "Employee [name=" + name + ", salary=" + salary + ", country=" + country + "]";
+	}
+
+}

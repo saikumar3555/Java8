@@ -1,0 +1,485 @@
+Course Name : JAVA - 8 NEW Features (Workshop)
+-----------------------------------------------------
+Duration : 2 Days (Today & Tomorrow) - (12 hours)
+
+Pre-Requisites : Basic Knowledge In Java Programming (Core Java)
+
+Trainer : Mr. Ashok (8+ Years experience, Working Professional)
+
+Course Content
+--------------
+1) JAVA 8 Introduction
+
+2) Why to Learn Java 8
+
+3) Lambda Expressions
+
+4) Use case to work with Lambda Expression
+
+5) Lambda Syntax
+
+6) Functional Interface
+
+7) Examples with Functional Interfaces
+
+8) Working with Collections using Lambda Expression
+
+9) Predefined Functional Interfaces
+
+10) Predicate & BiPredicate
+
+11) Supplier 
+
+12) Consumer & BiConsumer
+
+13) Function & BiFunction
+
+14) UnaryOperator
+
+15) BinaryOperator
+
+16) Interface Related Changes in Java 8 (Default Methods & Static Methods)
+
+17) Method Reference using :: operator
+
+18) Constructor Reference using :: operator
+
+19) Stream API (Serial Streaming & Parallel Streaming)
+
+20) Date & Time Api Changes
+
+21) StringJoiner class
+
+22) Optional class
+
+23) SplIterator
+
+24) Changes Related to Collection in Java 8
+
+25) forEach( ) method 
+-------------------------------------------------------------------------------------------
+
+-> Java is a programming language what was developed by James Gosling at Sun Microsystems in 1995.
+
+-> JAVA Released its 16th version on March 16th 2021
+
+-> Although Java has released its 16th version, Java 8 is widely used java version in industry.
+
+-> JAVA 8 released on 18th March 2014
+-------------------------------------------------------------------------------------------
+
+JAVA 1.0   ----------------------------------->   Major Release
+   Java 1.1 -----------------   Minor Release
+
+Java 1.2  ------------------------------------>   Major Release
+   Java 1.3 -----------------   Minor Release
+   Java 1.4 -----------------   Minor Release
+
+JAVA 1.5 -------------------------------------->   Major Release (Very Big Release)
+   Java 1.6 -----------------   Minor Release
+   Java 1.7 -----------------   Minor Release
+
+JAVA 1.8 -------------------------------------->  Major Release 
+		(Lambdas, Functional Programming, Stream api) (Very Very Big Release)
+  
+
+--------------------------------------------------------------------------------------------
+
+-> The main aim of java 8 is
+
+		1) To simplify programming
+		2) To enable functional programming
+		3) To enable pararllel programing
+
+-> Java is an object oriented programming language. By introducing lambdas in java 8, the authors of java tried to add elements of functional programming in java.
+
+-> In Object Oriented Programming Language, object and classes are the main entities.  If we create a method in oop language it should exist with in a class.
+
+-> In functional programming language, functions can exist outside the scope of an  object. function can be assigned to a reference variable and we can also pass them to other methods as an argument.
+
+-> Lambda expression is just an anonymous fucntion.
+			- No Name
+			- No Modifier
+			- No Return Type
+
+What is the use of lambda expressions?
+---------------------------------------
+-> To write functional programming in java
+
+-> To write more readable, maintainable and conside code
+
+-> To enable parallel programming in java
+---------------------------------------------------------------------------------------------
+
+
+
+package in.ashokit;
+
+public class WellWisher {
+
+	public static void wish(Greeting greeting) {
+		greeting.greet();
+	}
+
+	public static void main(String[] args) {
+		wish(new Greeting() {
+			@Override
+			public void greet() {
+				System.out.println("Namaste....!!");
+			}
+		});
+	}
+
+}
+
+-----------------------------------------------------------------------------------------
+-> From the above code java compiler knows that wish(Greeting greeting) method taking Greeting as a parameter so no need speicify that in anonymous implementation.
+
+-> Greeting interface having only one method so no need to specify method name also
+
+---------------------------------------------------------------------------------------------
+
+
+
+
+
+
+What is Lambda Expression?
+--------------------------
+-> Lambda expression is an anonymous function
+
+		- No Name
+
+		- No Modifier
+
+		- No Return Type
+
+-> Lambda Expressions are used to work with Functional Programming
+
+Syntax :
+
+			(parameters)  -> { 
+				//implementation
+			};
+
+Note: In the above syntax '->' arrow represents lambda expression.
+
+Note: If you know how to write method in java then you can write lambda expressions also
+
+
+--------------------------------Example-1---------------------------------------------------
+
+//Normal Java method
+public void sayHi(){
+   System.out.println("Hi");
+}
+
+//Corresponding Lambda for sayHi() method
+( ) -> {
+	System.out.println("Hi");
+}
+--------------------------------Example-2----------------------------------------------
+//Normal java method for addition
+public void add(int i, int j){
+	S.o.p(i+j);
+}
+
+//lambda representation for add method
+(i,j) -> { s.o.p(i+j) }
+
+-----------------------------------------Example-3----------------------------------------
+
+//normal java method for getting length of String
+
+public Integer getLength(String s){
+   return s.length();
+}
+
+//Lambda representation for getLength() method
+
+s -> s.length();
+----------------------------------------Eample-4----------------------------------------
+public class PersonService {
+
+	/**
+	 * This method is used to sort persons using names
+	 * 
+	 * @param persons
+	 * @return List<Person>
+	 */
+	public static List<Person> getPersons(List<Person> persons) {
+		Collections.sort(persons, new Comparator<Person>() {
+			@Override
+			public int compare(Person p1, Person p2) {
+				return p1.getName().compareTo(p2.getName());
+			}
+		});
+		return persons;
+	}
+------------------------------------------With Lambda------------------------------------
+	public class PersonService {
+
+	/**
+	 * This method is used to sort persons using names
+	 * 
+	 * @param persons
+	 * @return List<Person>
+	 */
+	public static List<Person> getPersons(List<Person> persons) {		
+		//Using Lambda
+		Collections.sort(persons, (p1,p2) -> p1.getName().compareTo(p2.getName()));
+		return persons;
+	}
+}
+}
+-------------------------------------------------------------------------------------------
+Functional Interfaces
+--------------------------------------------------------------------------------------------
+-> Functional Interface is used to invoke lambda expression
+
+-> The Interface which contains only one abstract method is called as Functional Interface
+
+-> In Java there are several predefined functional interfaces are available
+
+			-> Runnable -----------> run( )
+
+			-> Callable ------------> call ( )
+
+			-> ActionListener --------> actionPerformed( )
+
+			-> Comparable ------------> compareTo( )
+
+Note: Functional interface can contain any no.of default and static methods.
+
+-------------------------------------------------------------------------------------
+@FunctionalInterface
+public interface MyInterface{
+
+      public void m1();
+
+      default void m2() {
+
+      }
+
+      public static void m3(){
+
+      }
+} 
+----------------------------------------------------------------------------------------
+-> To represent our interface as Functional Interface we will use @FunctionalInterface annotation
+------------------------------------------------------------------------------------------
+
+-> Java 8 Introduced Functional Programming to Java
+
+-> To work with Functional Programming we will use Lambda expressions
+
+-> Lambda expression is an anonymous function
+                       - No name
+                       - No return type
+                       - No modifier
+
+-> To execute lambda expressions we will use Functional Interfaces
+
+-> The interface which contains only one abstract method is called as Functional Interface
+
+-> Functional Interface can contain any no.of default and static methods.
+
+-> To represent our interface as Functional Interface we will use @FunctionalInterface annotation
+
+---------------------------------------------------------------------------------------------
+Approch-1
+--------------------------------------------------------------------------------------
+package in.ashokit;
+
+public class Demo implements MyInterface {
+
+	@Override
+	public void sayHi() {
+		System.out.println("Hi");
+	}
+
+	public static void main(String[] args) {
+		MyInterface interf = new Demo();
+		interf.sayHi();
+	}
+
+}
+
+@FunctionalInterface
+interface MyInterface {
+	public void sayHi();
+}
+--------------------------------------------------------------------------------------------
+Approach-2
+----------------------------------------------------------------------------------------
+package in.ashokit;
+
+public class Demo {
+
+	public static void main(String[] args) {
+		MyInterface interf = new MyInterface() {
+			@Override
+			public void sayHi() {
+				System.out.println("Hi");
+			}
+		};
+		interf.sayHi();
+	}
+}
+
+@FunctionalInterface
+interface MyInterface {
+	public void sayHi();
+}
+-----------------------------------------------------------------------------------------
+Approach-3
+--------------------------------------------------------------------------------------------
+public class Demo {
+
+	public static void main(String[] args) {
+		MyInterface interf = () -> {
+			System.out.println("Hi");
+		};
+		interf.hi();
+	}
+}
+
+@FunctionalInterface
+interface MyInterface {
+	public void hi();
+}
+-----------------------------------------------------------------------------------------
+
+class Demo extends Thread{
+
+   public void run(){
+	for(int i = 1; i<=10; i++){
+	     syosut("child thread");
+	}
+   }
+
+   public static void main(String args[]){
+		Demo d = new Demo();
+                Thread t = new Thread(d);
+		t.start();
+   }
+ 
+}
+--------------------------------------------------------------------------------------------
+public interface Callable<T>{
+	public Future<T> call();
+}
+----------------------------------------------------------------------------------------------
+1) What is Lambda Expression
+
+2) Why Lambda expressions
+
+3) Functional Interfaces
+
+4) How to invoke lambda expressions using Functional Interfaces
+----------------------------------------------------------------------------------------------
+
+-> There are several predefined Functional Interfaces provided in Java 8
+
+	1) Predicate & BiPredicate
+	2) Consumer & BiConsumer
+	3) Supplier
+	4) Function & BiFunction
+
+
+-> All these functional interfaces are provided in java.util.function package
+--------------------------------------------------------------------------------------------
+
+Predicate
+----------
+-> It is a functional interface introduced in java 8
+
+-> It is available in java.util.function package
+
+-> It is used to perform some conditional operation and returns boolean value
+
+Syntax
+-------
+
+interface Predicate<T>{
+    boolean test(T k);
+}
+
+--------------------------without lambda---------------------------
+public boolean test(Integer i){
+	if(i > 10){
+		return true;
+	}else{
+		return false;
+	}
+}
+------------------------------With Lambda----------------------------------------
+
+(Integer i) -> {
+	if(i>10)
+	    return true;
+	else
+	    return false;
+}
+
+//simplified lambda
+
+(i) -> i > 10;
+-------------------------------With Predicate---------------------------------------------
+Predicate<Integer> p = (i) -> i > 10;
+s.o.p(p.test());
+--------------------------------------------------------------------------------------------
+-> When we have lambda expression to check the condition and returns boolean value then to call that lambda expression we can use 'Predicate' interface.
+--------------------------------------------------------------------------------------------
+
+Predicate Joining
+------------------
+-> To combine multiple predicates we will use Predicate Joining
+
+-> We have below methods also in Predicate
+
+test( )  ---------------> It is abstract method
+and( )
+or( )
+negate( )
+isEqual() ------------> Static method
+
+----------------------------------------------------------------------------------------------
+A person is eligible to create profile in matrimony based on below conditions
+
+	1) Person age should be greater than 21
+
+	2) Person age should be lessthan 60
+
+--------------------------------------------------------------------------------------
+if( age > 60 || serviceYears > 30){
+	//eligible for retirement
+}
+
+Predicate<Member> p = p1.or(p2);
+
+p.test(memberObj);
+-----------------------------------------------------------------------------------------
+
+-> negate() method returns a predicate that represents the logical negation of the predicate it is called.
+
+		Predicate<Integer> p = (i) -> i > 10;
+
+		p.negate().test(14);
+
+----------------------------------------------------------------------------------------------
+Introduction to BiPredicate
+------------------------------------------------------------------------------
+-> Predicate<T> takes only one parameter and returns the result as boolean value.
+
+-> If we have requirement to supply two parameters then we can use BiPredicate<T,T>
+
+-> BiPredicate<T,T> functional interface contains test(obj, obj) method it takes two arguments and returns boolean result. (test (obj, obj) is an abstract method)
+
+--------------------------------------------------------------------------------------------
+BiPredicate<Person, Integer> bipredicate = (person, minAge) -> {
+			return person.age > minAge;
+};
+
+boolean status = biPredicate.test(person, minAge);
+---------------------------------------------------------------------------------------------

@@ -1,0 +1,13 @@
+package in.ashokit;
+
+import java.time.LocalTime;
+
+public class Demo2 {
+
+	public static void main(String[] args) {
+		// Getting current Time
+		LocalTime time = LocalTime.now();
+		System.out.println(time);
+	}
+
+}

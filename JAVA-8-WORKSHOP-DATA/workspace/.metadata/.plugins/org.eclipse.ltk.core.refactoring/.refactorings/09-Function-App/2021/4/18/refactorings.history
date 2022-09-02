@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Extract method &apos;private static Function&lt;User,String&gt; loginLambdaFunction()&apos; from &apos;in.ashokit.Demo4.main()&apos; to &apos;in.ashokit.Demo4&apos;&#x0D;&#x0A;- Original project: &apos;09-Function-App&apos;&#x0D;&#x0A;- Method name: &apos;loginLambdaFunction&apos;&#x0D;&#x0A;- Destination type: &apos;in.ashokit.Demo4&apos;&#x0D;&#x0A;- Declared visibility: &apos;private&apos;" comments="false" description="Extract method &apos;loginLambdaFunction&apos;" destination="0" exceptions="false" flags="786434" id="org.eclipse.jdt.ui.extract.method" input="/src&lt;in.ashokit{Demo4.java" name="loginLambdaFunction" replace="false" selection="254 203" stamp="1619323393899" version="1.0" visibility="2"/>
+</session>

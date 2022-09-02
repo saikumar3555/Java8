@@ -1,0 +1,126 @@
+Topic : Stream API
+----------------------------------------------------------------------
+-> Stream API introduced in java 8
+
+Collections vs Streams
+-----------------------
+-> Collections are used to Store the data
+
+-> Stream is used to process the data
+
+
+Note: Collections & Streams both are not same.
+--------------------------------------------------------------------------------
+
+-> The addition of stream api was one of the major features added to java8.
+
+-> A stream in java can be defined as a sequence of elements from a source that supports aggregate operations on them.
+
+-> The source here refers to collection or array that provide data to stream
+
+
+
+Few Important points about Streams
+-----------------------------------
+1) Stream is not a data structure. It is a bunch of operations applied to a source. The source can be a collection, array or i/o channels.
+
+2) Streams don't change the original data structure
+
+3) There can be zero or more intermediate operations that transforms a stream into another stream.
+
+4) Each intermediate opeation is lazily executed (Will discuss later abt lazy)
+
+5) Terminal operations produce the result of the stream.
+
+
+Stream Creation
+---------------
+-> In java 8 we can create stream in 2 ways
+
+		1) Stream.of(v1, v2, v3...)
+		2) stream()
+
+The Stream Interfaces
+------------------------
+IntStream
+LongStream
+DoubleStream etc....
+
+------------------------------------------------------------------------------
+
+-> Stream api provided several methods to perform operations. 
+
+-> The methods which are provided by stream api can be categorized into 2 types
+
+		1) Intermediate Operational Methods
+		2) Terminal Operational Methods
+
+
+-> Intermediate operational methods will not produce any results. They usally accept functional interfaces as parameter and always returns new Stream.
+
+		Ex: filter() and map() etc...
+
+-> Terminal Operational methods will take input and produce results.
+
+		Ex: count(), toArray() and collect()
+----------------------------------------------------------------------------------
+-> The stream operational methods further classified into below categories
+
+		1) filtering
+		2) slicing
+		3) mapping
+		4) matching & finding
+		5) reduction
+		6) collect
+---------------------------------------------------------------------------
+Filtering Operations Using Streams
+
+		a) filter() method
+		b) filter() with custom object
+		c) filter chaining
+--------------------------------------------------------------------------------
+-> Stream interface contains filter() method to filter the data. It method perform intermediate operations.
+
+
+Syntax : Stream filter(Predicate predicate);
+
+Parameter -> predicate that decides weather to include that element or not
+
+Return Type -> It returns a stream consisting of the elements of this stream which match the given predicate.
+
+--------------------------------------------------------------------------------
+Mapping Operations in Stream
+---------------------------------------------------------------------------------
+
+-> Mapping operations are those operations that transforms the elements of a stream and return new stream with transformed elements.
+
+-> There are two common methods available to perform mapping operations they are
+
+		1) map ( ) 
+		2) flatMap( )
+
+
+syntax : Stream<R> map(Function function)
+
+input parameter: Represents function to apply on each element
+
+return type : returns transformed data as a stream
+
+---------------------------------------------------------------------------------
+-> Stream flatMap() method is used to flatten a stream of collection to stream of elements combined from all collections.
+
+----------------------------------------------------------------------------------
+Slicing Operations in Stream
+---------------------------------------------------------------------------------
+-> Slicing operations are intermedidate stream operations and as the name implies they are used to slice a stream.
+
+-> To perform slicing operations we have below methods
+
+		1) distinct()
+		2) limit()
+		3) skip()
+----------------------------------------------------------------------------------
+
+
+
+

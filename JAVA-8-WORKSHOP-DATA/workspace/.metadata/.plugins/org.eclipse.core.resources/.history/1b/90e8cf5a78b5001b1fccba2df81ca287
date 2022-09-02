@@ -1,0 +1,19 @@
+package in.ashokit;
+
+public class Demo {
+
+}
+
+class Person {
+	String name;
+	int age;
+	String country;
+
+	public Person(String name, int age, String country) {
+		super();
+		this.name = name;
+		this.age = age;
+		this.country = country;
+	}
+
+}

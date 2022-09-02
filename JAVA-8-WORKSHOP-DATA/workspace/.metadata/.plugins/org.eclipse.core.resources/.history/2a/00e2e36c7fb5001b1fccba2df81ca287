@@ -1,0 +1,17 @@
+package in.ashokit;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Demo2 {
+
+	public static void main(String[] args) {
+		List<String> list = new ArrayList<>();
+		list.add("done");
+		list.add("far");
+		list.add("away");
+		list.add("again");
+
+	}
+
+}

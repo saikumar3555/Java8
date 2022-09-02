@@ -1,0 +1,12 @@
+package in.ashokit;
+
+public class Demo {
+
+}
+
+class Person {
+	String name;
+	int age;
+	String country;
+
+}

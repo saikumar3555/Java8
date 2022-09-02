@@ -1,0 +1,28 @@
+package in.ashokit;
+
+import java.util.function.BiPredicate;
+
+public class BiPredicateDemo {
+
+	public static boolean isPersonEligForVote(Person person, Integer minAge, BiPredicate<Person, Integer> predicate) {
+		return predicate.test(person, minAge);
+	}
+
+	public static void main(String[] args) {
+
+		Person p = new Person("Alex", 20);
+
+	}
+}
+
+class Person {
+	String name;
+	int age;
+
+	public Person(String name, int age) {
+		super();
+		this.name = name;
+		this.age = age;
+	}
+
+}

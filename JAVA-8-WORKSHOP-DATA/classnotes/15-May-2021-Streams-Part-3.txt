@@ -1,0 +1,160 @@
+Matching Operations in Stream
+-----------------------------------------------------------------------------------
+
+-> Matching operations are terminal operations that are used to check if elements with certain criteria are present in the stream or not.
+
+-> We have below 3 methods to perform matching operations in the Stream
+
+		1) anyMatch ( )
+
+		2) allMatch ( )
+
+		3) noneMatch ( )
+
+-> boolean anyMatch(Predicate predicate) : This method takes predicate as input and return boolean value
+
+----------------------------------------------------------------------------------
+Finding Operations In Stream
+---------------------------------------------------------------------------------
+-> In the previous example we looked at matching operations. Those operations check weather the elements in the stream match particular criteria and they return true or false.
+
+-> Sometimes we need to get the matched element instead of just verifying. Finding Operations are used for this purpose.
+
+-> There are two basic finding operations in Streams
+
+		1) findFirst ( )
+
+		2) findAny ( )
+
+----------------------------------------------------------------------------------
+Reduction Operations In Stream
+-----------------------------------------------------------------------------------
+-> Reduction Operations are those operations which reduce the stream into single value.
+
+-> The operations that we are going to discuss are immutable operations because they reduce the result into a single-valued immutable variable.
+
+Ex
+--
+-> Given a collection of objects, we may need to get the sum of all the elements, max element, min element or any other operation which gives single value as a result.
+
+----------------------------------------------------------------------------------
+Collectors :: Collection Operations In Streams
+----------------------------------------------------------------------------------
+package in.ashokit;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+public class Demo3 {
+
+	public static void main(String[] args) {
+		List<User> user = new ArrayList<>();
+
+		user.add(new User("Ram", 10000, "India"));
+		user.add(new User("Anil", 20000, "Canada"));
+		user.add(new User("Sunil", 30000, "India"));
+		user.add(new User("Orlen", 40000, "Japan"));
+		user.add(new User("Cathie", 50000, "UK"));
+		user.add(new User("Ching Chong", 10000, "China"));
+
+		Map<String, List<User>> collect = user.stream().collect(Collectors.groupingBy(User::getCountry));
+		System.out.println(collect);
+
+	}
+
+}
+
+class User {
+	String name;
+	int salary;
+	String country;
+
+	public User(String name, int salary, String country) {
+		this.name = name;
+		this.salary = salary;
+		this.country = country;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getSalary() {
+		return salary;
+	}
+
+	public void setSalary(int salary) {
+		this.salary = salary;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+	@Override
+	public String toString() {
+		return "User [name=" + name + ", salary=" + salary + ", country=" + country + "]";
+	}
+
+}
+-----------------------------------------------------------------------------------
+Parallel Streams
+-----------------------------------------------------------------------------------
+-> As of now we have only been looked at serial stream. However java 8 introduced the concept of the parallel stream and parallel processing.
+
+-> We can create a parallel stream in 2 ways
+
+                 1) parallelStream( )
+                 2) parallel( )
+
+----------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

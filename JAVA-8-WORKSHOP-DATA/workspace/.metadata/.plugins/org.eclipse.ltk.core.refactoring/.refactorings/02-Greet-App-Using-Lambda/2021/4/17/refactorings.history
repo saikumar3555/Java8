@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete 2 elements from project &apos;02-Greet-App-Using-Lambda&apos;&#x0D;&#x0A;- Original project: &apos;02-Greet-App-Using-Lambda&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     in.ashokit.EnglishGreeting.java&#x0D;&#x0A;     in.ashokit.HindiGreeting.java" description="Delete elements" element1="/src&lt;in.ashokit{HindiGreeting.java" element2="/src&lt;in.ashokit{EnglishGreeting.java" elements="2" flags="589830" id="org.eclipse.jdt.ui.delete" resources="0" stamp="1619237304518" subPackages="false" version="1.0"/>
+</session>

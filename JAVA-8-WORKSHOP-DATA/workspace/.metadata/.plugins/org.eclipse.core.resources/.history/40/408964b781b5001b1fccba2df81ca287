@@ -1,0 +1,37 @@
+package in.ashokit;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Demo3 {
+	
+	public static void main(String[] args) {
+		List<User> user = new ArrayList<>();
+		
+		user.add(new User("Ram", 10000, "India"));
+		user.add(new User("Ram", 10000, "India"));
+		user.add(new User("Ram", 10000, "India"));
+		user.add(new User("Ram", 10000, "India"));
+		user.add(new User("Ram", 10000, "India"));
+		user.add(new User("Ram", 10000, "India"));
+	}
+
+}
+
+class User {
+	String name;
+	int salary;
+	String country;
+
+	public User(String name, int salary, String country) {
+		this.name = name;
+		this.salary = salary;
+		this.country = country;
+	}
+
+	@Override
+	public String toString() {
+		return "User [name=" + name + ", salary=" + salary + ", country=" + country + "]";
+	}
+
+}

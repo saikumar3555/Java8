@@ -1,0 +1,30 @@
+package in.ashokit;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Demo {
+	
+	public static void main(String[] args) {
+		List<Employee> list = new ArrayList<>();
+		
+		list.add(new Employee("Ram", 23, 20000));
+		list.add(new Employee("Ram", 23, 20000));
+		list.add(new Employee("Ram", 23, 20000));
+		list.add(new Employee("Ram", 23, 20000));
+	}
+
+}
+
+class Employee {
+	String name;
+	int age;
+	int salary;
+
+	public Employee(String name, int age, int salary) {
+		this.name = name;
+		this.age = age;
+		this.salary = salary;
+	}
+
+}

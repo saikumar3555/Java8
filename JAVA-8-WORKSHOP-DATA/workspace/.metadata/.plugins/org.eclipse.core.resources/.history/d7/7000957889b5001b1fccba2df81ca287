@@ -1,0 +1,25 @@
+package in.ashokit;
+
+import java.time.LocalDate;
+import java.time.Month;
+
+public class Demo1 {
+
+	public static void main(String[] args) {
+
+		// Getting Current Date
+		LocalDate now = LocalDate.now();
+		System.out.println(now);
+
+		// Getting specific date using of method
+		LocalDate date = LocalDate.of(2020, 05, 20);
+		System.out.println(date);
+
+		date = LocalDate.of(2021, Month.MAY, 20);
+		System.out.println(date);
+		
+		//date parsing
+
+	}
+
+}

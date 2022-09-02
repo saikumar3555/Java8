@@ -1,0 +1,43 @@
+package in.ashokit;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class Demo3 {
+
+	public static void main(String[] args) {
+		List<User> user = new ArrayList<>();
+
+		user.add(new User("Ram", 10000, "India"));
+		user.add(new User("Anil", 20000, "Canada"));
+		user.add(new User("Sunil", 30000, "India"));
+		user.add(new User("Orlen", 40000, "Japan"));
+		user.add(new User("Cathie", 50000, "UK"));
+		user.add(new User("Ching Chong", 10000, "China"));
+		
+		
+		user.stream().collect(Collectors.groupingBy(User::getCountry));
+		
+		
+	}
+
+}
+
+class User {
+	String name;
+	int salary;
+	String country;
+
+	public User(String name, int salary, String country) {
+		this.name = name;
+		this.salary = salary;
+		this.country = country;
+	}
+
+	@Override
+	public String toString() {
+		return "User [name=" + name + ", salary=" + salary + ", country=" + country + "]";
+	}
+
+}

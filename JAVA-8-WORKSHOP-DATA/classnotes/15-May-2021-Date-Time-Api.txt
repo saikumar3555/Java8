@@ -1,0 +1,48 @@
+-> Java 8 introduced a new Date and Time API under the package of java.time
+
+-> It is very Rich api for working with dates and times.
+
+-----------------------------------------------------------------------------------
+Limitations of the old Date/Time api
+----------------------------------------------------------------------------------
+1) The old date class is not thread safe
+
+2) The old date class is mutable
+
+3) Any thread can take reference of date class and can modify the value
+
+4) Prior to java 8, java uses String to represent TimeZone. If we need to get the timezone for HongKong then below is the code
+
+	TimeZone zone = TimeZone.getInstance("Asia/Hong_Kong");
+
+5) There are chances that we might do spelling mistakes in Timezone and java doesn't have any check for this.
+
+6) The old Date class will represent both date and time. If we want to get only time that is not possible without getting date.
+
+-> To overcome above limitations they introduced complete new Date and Time api in Java - 8.
+
+-----------------------------------------------------------------------------------
+Date & Time Changes in Java 8-----------------------------------------------------------------------------------
+-> In Java 8 we can use below components to work with Date and Time
+
+		1) LocalDate
+
+		2) LocalTime
+
+		3) LocalDateTime
+
+		4) ZonedDateTime
+
+		5) Period and Duration
+----------------------------------------------------------------------------------
+Optional Class Introduced in Java - 8
+----------------------------------------------------------------------------------
+-> Java 8 introduced a new class called Optional in java.util package
+
+-> The Optional<T> is wrapper class that stores object of type T. The object may or may not be present in the Optional.
+
+
+
+
+
+

@@ -1,0 +1,9 @@
+package in.ashokit;
+
+public class MinMaxDemo {
+	
+	public static void main(String[] args) {
+		List<Integer> list = new ArrayList<>();
+	}
+
+}

@@ -1,0 +1,388 @@
+Yesterday's session : Predicate & BiPredicate
+-------------------------------------------------------------------
+-> When we have lambda expression to check some condition and returns boolean value then to call that lambda expression we will use Predicate.
+
+-> Predicate is a predefined functional interface which takes only one input parameter
+
+-> If we want to supply two input parameters for lambda then we can use BiPredicate functional interface
+
+-> Predicate & BiPredicate contains test( ) method to execute lamabda. That test ( ) method is abstract method.
+
+-> In predicate we have below methods also
+
+		and() 
+		or()
+		negate()
+		isEquals() --------- static method
+
+-------------------------------------------------------------------------
+Today's session : Supplier
+------------------------------------------------------------------------
+
+-> Supplier is an interface that doesn't take any argument but produces a value when the get( ) method is called.
+
+-> Supplier are useful when we don't need to pass any value as input but we want a result.
+
+	Ex: Get Random pwd, Get OTP, Get Randome Name etc...
+
+-> Supplier interface contains only one abstract method i.e get ( )
+
+
+Syntax
+-------
+interface Supplier{
+   R get();
+}
+
+Requirement
+---------------
+Write a lambda expression to get name from below array (randomley)
+
+String[]  names = {"Sachin", "Shewag", "Ganguly", "Dravid", "Yuvraj"};
+
+
+
+Requirement : Write a lambda expression which generates 5 digit OTP
+-------------------------------------------------------------------
+package in.ashokit;
+
+import java.util.function.Supplier;
+
+public class Demo3 {
+
+	public static void main(String[] args) {
+
+		Supplier<String> supplier = () -> {
+			StringBuilder otp = new StringBuilder("");
+			for (int i = 1; i <= 5; i++) {
+				otp.append((int) (Math.random() * 10));
+			}
+			return otp.toString();
+		};
+
+		System.out.println(supplier.get());
+		System.out.println(supplier.get());
+		System.out.println(supplier.get());
+
+	}
+}
+-----------------------------------------------------------------------------
+-> When we have lambda expression which doesn't take any input parameter but it produces output then to call that lambda we can use Supplier interface.
+
+---------------------------------------------------------------------------------
+Consumer - Predefined Functional Interface
+---------------------------------------------------------------------------------
+
+-> It is a predefined functional interface in java 8
+
+-> It contains only one abstract method i.e accept(T t)
+
+-> Consumer will take input values then will perform operation but it won't return any value.
+
+Syntax
+------
+public interface Consumer{
+
+	void accept(T t)
+}
+----------------------------------------------------------------------------
+public class Demo1 {
+
+	public static void main(String[] args) {
+		Consumer<String> consumer1 = s -> System.out.println(s.toUpperCase());
+		consumer1.accept("ashok it");
+
+		Consumer<Integer> consumer2 = i -> System.out.println(i * i);
+		consumer2.accept(5);
+	}
+
+}
+----------------------------------------------------------------------------------
+Consumer Chaining
+--------------------------------------------------------------------------------
+-> In Consumer interface we have andThen( ) method to achieve consumer chaining
+
+-> andThen() is a default method available in Consumer interface
+
+
+package in.ashokt;
+
+import java.util.function.Consumer;
+
+public class Demo2 {
+
+	public static void main(String[] args) {
+		Consumer<String> consumer1 = (arg) -> System.out.println(arg + " My Name is Ashok");
+
+		Consumer<String> consumer2 = (arg) -> System.out.println(arg + " I am from India");
+
+		consumer1.andThen(consumer2).accept("Hello, ");
+	}
+
+}
+------------------------------------------------------------------------------------------------------------
+BiConsumer<T, U>
+-----------------------------------------------------------------------------------------------> Consumer interface takes only one argument 
+
+-> If we want to supply two arguments for lambda then we can use BiConsumer interface
+
+Syntax:
+-------
+interface BiConsumer<T, U> {
+
+	void accept(T, U);
+}
+-------------------------------------------------------------------------------------------
+
+-> We discussed about Predicate & BiPredicate (conditional check & returns boolean)
+
+-> We discussed about Supplier (No input but returns output)
+
+-> We discussed about Consumer & BiConsumer (Takes only input But No Output)
+----------------------------------------------------------------------------------------------
+Function
+--------------------------------------------------------------------------------------------
+-> Function is a predefined functional interface introduced in java 8
+
+-> Function interface can take input (Type T) and returns output (Type R)
+
+-> Function can return any value where as Predicate returns only boolean value
+
+Syntax:
+------
+interface Function<T, R>{
+
+    R  apply (T t);
+}
+
+
+Ex-1: Take string as input and return length of the string as output
+
+Ex-2: Take integer and returns multiplication of that integer
+
+
+--------------------------------------------------------------------------------------------
+
+Requirement: Take string as input and return the string by removing empty spaces.
+
+Input : Ashok IT (Learn Here.. Lead Anywhere..!!)
+Expected Output: AshokIT(LearnHere..LeadAnywhere..!!)
+
+---------------------------------------------------------------------------------------------
+
+package in.ashokit;
+
+import java.util.function.Function;
+
+public class Demo4 {
+
+	private static Function<User, String> loginLambdaFunction() {
+		Function<User, String> function = (user) -> {
+			if (user.uname.equals("admin") && user.pwd.equals("admin123")) {
+				return "Login Success";
+			} else {
+				return "Invalid Credentials";
+			}
+		};
+		return function;
+	}
+
+	private static String loginCheck(User user, Function<User, String> function) {
+		return function.apply(user);
+	}
+
+	public static void main(String[] args) {
+		Function<User, String> function = loginLambdaFunction();
+
+		System.out.println(loginCheck(new User("admin", "admin123"), function));
+		System.out.println(loginCheck(new User("admin", "admin123"), function));
+	}
+}
+
+class User {
+
+	String uname;
+	String pwd;
+
+	public User(String uname, String pwd) {
+		this.uname = uname;
+		this.pwd = pwd;
+	}
+
+}
+-----------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------
+Function Chaining
+----------------------------------------------------------------------------------------
+-> To join one function with another function is called as Function Chaining
+
+
+-> To achieve function chaining we have below 2 methods in Function interface
+
+	f1.andThen(f2); ---> First f1 will execute then f2 will be executed
+
+	f1.compose(f2);  ---> First f2 will execute then f1 will be executed
+-------------------------------------------------------------------------------------------
+package in.ashokit;
+
+import java.util.function.Function;
+
+public class Demo5 {
+
+	public static void main(String[] args) {
+		Function<String, String> f1 = s -> s.toUpperCase();
+		// System.out.println(f1.apply("ashok it"));
+
+		Function<String, String> f2 = s -> s.substring(0, 5);
+		// System.out.println(f2.apply("Ashok IT"));
+
+		String string1 = f1.andThen(f2).apply("ashok it");
+		System.out.println(string1);
+
+		String string2 = f1.compose(f2).apply("ashok it");
+		System.out.println(string2);
+	}
+
+}
+--------------------------------------------------------------------------------------------
+
+BiFunction<T,U,R>
+------------------
+-> Function interface can take only one input
+
+-> To supply two inputs for lambda we will use BiFunction interface
+
+Syntax
+------
+public interface BiFunction<T,U,R>{
+	public R apply(T,U);
+}
+----------------------------------------------------------------------------------------------
+
+-> A lambda expression can capture the three types of variables
+
+		1) static variables
+		2) instance variables
+		3) local variables
+
+Note: If a lambda expression capturing a local variable then that variable should be final or effictively final.
+
+-> Before Java-8, we can't use non-final local variable in anonymous implementation. If you need to access a local variable in anonymous implementation then it should be final.
+
+-> The restriction for local variables in anonymous implementation got relaxation.
+
+-> From Java-8 onwards compiler can check local variable value is changed or not in anonymous implementation. If local variable value is not changed in anonymous implementation then it is called Effectively final variable.
+
+----------------------------------------------------------------------------------------------
+
+Interface Related changes in Java-8
+---------------------------------------------------------------------------------------------
+-> Upto Java 1.7 we can declare only abstract methods in an Interface.
+
+-> However from Java 1.8 onwards we can write concreate methods also in an Interface. The method which contains implementation is called as Concreate Method.
+
+-> In Interface concreate methods should be either "default" or "static" only.
+
+--------------------------------------------------------------------------------------------
+
+-> From Java 8 we can write static methods also interfaces.
+
+-> Static methods are similar to default methods but the only difference is that you can't override static methods.
+
+---------------------------------------------------------------------------------------------
+-> Java 8 Introduction
+-> Java 8 Features
+-> Advantages of Java 8
+-> What is Lambda Expression?
+-> Why Lambda Expression?
+-> Lambda Syntax
+-> 5-Examples using Lambda Expressions
+-> What is Functional Interface?
+-> How to invoke Lambdas using FI
+-> Predicate & BiPredicate
+-> Supplier
+-> Consumer & BiConsumer
+-> Function & BiFunction
+-> Effectively Final (Lambda Restriction for Local Variables)
+-> Interface Related Changes in Java - 8
+-> Default Methods
+-> Static Methods
+----------------------------------------------------------------------------------------------
+Method Reference and Constructor Reference Using :: Operator
+---------------------------------------------------------------------------------------------
+
+-> As the name suggests, it is used to refernce a method
+
+-> Method references are similar to object references
+
+Note: Method references are shortend version of lambda expressions that call a specific method
+
+
+
+Ex-1: Consumer<String> consumer = (s) -> System.out.println(s);
+
+-> The above line can be written like this using method reference
+
+	Consumer<String> consumer = (s) -> System.out::println
+
+
+Ex-2 :	Function<Person,Integer> function = (person) -> person.getAge();
+
+-> The above line can be written like this using method reference
+
+        Function<Person,Integer> function = (person) -> person::getAge
+
+--------------------------------------------------------------------------------------------
+
+Static Method Reference
+-----------------------
+ClassName :: methodName
+
+Instance Method Reference
+-------------------------
+objRef :: methodName
+
+-> Method references are used for re-using exsiting methods for Implementing Functional Interfaces.
+
+
+-> By using method references we can achieve code re-usability
+
+Note : When we want to go for method reference refer method and referre method should have same type of arguments.
+
+m1(int i, int j)
+
+m2(int j, int k)
+-----------------------------------------------------------------------------------------
+Constructor Reference
+-----------------------------------------------------------------------------------------
+package in.ashokit;
+
+import java.util.function.Supplier;
+
+public class Demo1 {
+
+	public static void main(String[] args) {
+		/*Supplier<Sample> i = () -> {
+			Sample s = new Sample();
+			return s;
+		};*/
+		
+		Supplier<Sample> i = Sample::new; //Constructor Reference
+
+		System.out.println(i.get().hashCode());
+		System.out.println(i.get().hashCode());
+	}
+
+}
+
+class Sample {
+	public Sample() {
+		System.out.println("Sample::Constructor");
+	}
+}
+--------------------------------------------------------------------------------------------
+
+
+
+
